@@ -10,7 +10,7 @@ import re
 import unittest
 from send_one_email import *
 from send_many_emails_from_json_database import send_many_emails_from_database
-
+from blrns import *
 
 class TestMethods(unittest.TestCase):
     
@@ -39,6 +39,10 @@ class TestMethods(unittest.TestCase):
         self.assertFalse(send_many_emails_from_database("invalid path to database"))
         self.assertTrue(send_many_emails_from_database(database))
 
+    def test_mini_devsec(self):
+        """Проверка падения при отправке некорректно сформированной строки"""
+        for str_nasty in devsecops:
+            self.assertFalse(valid_email(str(str_nasty)))    
 
 if __name__ == '__main__':
     unittest.main()

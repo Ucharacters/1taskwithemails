@@ -13,7 +13,7 @@ def send_many_emails_from_database(database):
     except ValueError:
         return False
     
-    if not df:
+    if df.shape[0]==0:
         return False
     
     if monitoring_enabled:
